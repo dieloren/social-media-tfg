@@ -1,0 +1,4 @@
+'\\WSL.LOCALHOST\UBUNTU\home\dieloren\tfg\public'
+CMD.EXE se inici¢ con esta ruta como el directorio actual. No se permiten
+rutas UNC. Regresando de manera predeterminada al directorio Windows.
+No se esperaba ) en este momento.
