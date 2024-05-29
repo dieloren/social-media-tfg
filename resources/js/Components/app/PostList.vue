@@ -47,12 +47,15 @@ const post2 = {
     `,
     createdAt: '2021-09-01 13:00',
 }
+
+defineProps({
+    posts: Array
+})
 </script>
 
 <template>
     <div class="overflow-auto">
-        <PostItem :post="post1"/>
-        <PostItem :post="post2"/>
+        <PostItem v-for="post of posts" :key="post.id" :post="post"/>
     </div>
 </template>
 
