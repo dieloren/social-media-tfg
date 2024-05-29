@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import GroupList from "@/Components/app/GroupList.vue";
 import FollowingList from "@/Components/app/FollowingList.vue";
 import CreatePost from "@/Components/app/CreatePost.vue";
