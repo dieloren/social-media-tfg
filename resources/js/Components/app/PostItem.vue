@@ -29,7 +29,7 @@ function deletePost() {
     <div class="bg-white border rounded p-4 mb-3">
         <div class="flex items-center justify-between mb-3">
             <PostUserHeader :post="post" :show-time="true" />
-            <Menu as="div" class="relative inline-block text-left">
+            <Menu as="div" class="relative inline-block text-left z-10">
                 <div>
                     <MenuButton class="w-8 h-8 rounded-full hover:bg-black/5 transition flex items-center justify-center">
                         <EllipsisVerticalIcon
