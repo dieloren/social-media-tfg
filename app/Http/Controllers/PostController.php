@@ -115,4 +115,10 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function downloadAttachment(PostAttachment $attachment)
+    {
+        $customName = 'custom_file_name.extension';
+        return response()->download(Storage::disk('public')->path($attachment->path), $attachment->name);
+    }
 }
