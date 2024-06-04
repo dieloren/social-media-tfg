@@ -13,17 +13,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        $posts = Post::query()
-            ->withCount('reactions')
-            ->withCount('comments')
-            ->with([
-                'comments',
-                'reactions' => function ($query) use ($userId) {
-                    $query->where('user_id', $userId);
-                },
-            ])
-            ->latest()
-            ->paginate(20);
+        $posts = Post::query()->withCount('reactions')->latest()->paginate(20);
         return Inertia::render('Home', [
             'posts' => PostResource::collection($posts)
         ]);
