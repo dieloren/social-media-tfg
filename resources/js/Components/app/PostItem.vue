@@ -1,5 +1,5 @@
 <script setup>
-import {ChatBubbleLeftRightIcon, HandThumbUpIcon, ArrowDownTrayIcon} from '@heroicons/vue/24/outline'
+import {ChatBubbleLeftRightIcon, HandThumbUpIcon, ArrowDownTrayIcon, PencilIcon} from '@heroicons/vue/24/outline'
 import {HandThumbUpIcon as HandThumbUpIconSolid} from '@heroicons/vue/24/solid'
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
 import PostUserHeader from "@/Components/app/PostUserHeader.vue";
@@ -106,6 +106,7 @@ function updateComment() {
         </div>
         <div class="mb-3">
             <ReadMoreLess :content="post.body" />
+            <span v-if="post.created_at !== post.updated_at" class="text-indigo-500">[edited]</span>
         </div>
         <div class="grid gap-3 mb-3" :class="[
             post.attachments.length === 1 ? 'grid-cols-1' : 'grid-cols-2'
@@ -185,7 +186,12 @@ function updateComment() {
                                             {{ comment.user.name }}
                                         </a>
                                     </h4>
-                                    <small class="text-xs text-gray-400">{{ comment.updated_at }}</small>
+                                    <small class="text-xs text-gray-400">
+                                        {{ comment.updated_at }}
+                                        <span v-if="comment.created_at !== comment.updated_at">
+                                            [edited]
+                                        </span>
+                                    </small>
                                 </div>
                             </div>
                             <EditDeleteDropdown :user="comment.user" @edit="startCommentEdit(comment)" @delete="deleteComment(comment)" />
