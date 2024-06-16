@@ -1,11 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
-use App\Models\Post;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\File;
 
 class UpdatePostRequest extends StorePostRequest
 {
@@ -21,8 +17,8 @@ class UpdatePostRequest extends StorePostRequest
     public function rules(): array
     {
         return array_merge(parent::rules(), [
-            'deleted_files_ids' => 'array',
-            'deleted_files_ids.*' => 'numeric'
+            'deleted_file_ids' => 'array',
+            'deleted_file_ids.*' => 'numeric'
         ]);
     }
 }

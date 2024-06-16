@@ -71,13 +71,14 @@ class PostController extends Controller
         try {
             $data = $request->validated();
             $post->update($data);
-            $deleted_ids = $data['deleted_files_ids'] ?? [];
+            $deleted_ids = $data['deleted_file_ids'] ?? [];
             $attachments = PostAttachment::query()
                 ->where('post_id', $post->id)
                 ->whereIn('id', $deleted_ids)
                 ->get();
 
             foreach ($attachments as $attachment) {
+                Storage::disk('public')->delete($attachment->path);
                 $attachment->delete();
             }
 
