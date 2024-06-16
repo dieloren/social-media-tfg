@@ -172,7 +172,7 @@ function updateComment() {
                         <div class="flex justify-between gap-2">
                             <div class="flex gap-2">
                                 <a href="javascript:void(0)">
-                                    <img :src="comment.user.avatar_url"
+                                    <img :src="comment.user.avatar_url !== '/storage/' ? comment.user.avatar_url : '/img/default_avatar.webp'"
                                          class="w-[40px] rounded-full border border-2 transition-all hover:border-blue-500"/>
                                 </a>
                                 <div>
