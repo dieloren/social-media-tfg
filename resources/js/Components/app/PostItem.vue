@@ -158,7 +158,7 @@ function updateComment() {
             <DisclosurePanel class="mt-3">
                 <div class="flex gap-2 mb-3">
                     <a href="javascript:void(0)">
-                        <img :src="authUser.avatar_url"
+                        <img :src="authUser.avatar_url !== '/storage/' ? authUser.avatar_url : '/img/default_avatar.webp'"
                              class="w-[40px] rounded-full border border-2 transition-all hover:border-blue-500"/>
                     </a>
                     <div class="flex flex-1">

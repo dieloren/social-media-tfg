@@ -14,7 +14,7 @@
                 {{ errors.cover }}
             </div>
             <div class="group relative bg-white">
-                <img :src="coverImageSource || user.cover_url || '/img/default_cover.jpeg'" class="w-full h-[200px] object-cover">
+                <img :src="user.cover_url !== '/storage/' ? user.cover_url : '/img/default_cover.jpeg'" class="w-full h-[200px] object-cover">
                 <div class="absolute top-2 right-2">
                     <button v-if="!coverImageSource" class="bg-gray-50 hover:bg-gray-100 text-gray-800 py-1 px-2 text-xs flex items-center opacity-0 group-hover:opacity-100">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="flex">
                     <div class="relative flex items-center justify-center group/avatar -mt-[64px] ml-[48px] w-[128px] h-[128px] rounded-full">
-                        <img :src="avatarImageSource || user.avatar_url || '/img/default_avatar.webp'"
+                        <img :src="user.avatar_url !== '/storage/' ? user.avatar_url : '/img/default_avatar.webp'"
                              class="w-full h-full object-cover rounded-full">
                         <button v-if="!avatarImageSource" class="absolute left-0 top-0 right-0 bottom-0 bg-black/50 text-gray-200 rounded-full opacity-0 flex items-center justify-center group-hover/avatar:opacity-100">
                             <CameraIcon class="w-8 h-8" />
