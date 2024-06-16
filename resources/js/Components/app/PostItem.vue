@@ -1,5 +1,6 @@
 <script setup>
 import {ChatBubbleLeftRightIcon, HandThumbUpIcon, ArrowDownTrayIcon} from '@heroicons/vue/24/outline'
+import {HandThumbUpIcon as HandThumbUpIconSolid} from '@heroicons/vue/24/solid'
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
 import PostUserHeader from "@/Components/app/PostUserHeader.vue";
 import {router, usePage} from '@inertiajs/vue3'
@@ -20,6 +21,7 @@ const props = defineProps({
 })
 
 const newCommentText = ref('')
+let showLikes = false;
 
 const emit = defineEmits(['editClick', 'attachmentClick'])
 
@@ -46,6 +48,7 @@ function sendReaction() {
         .then(({data}) => {
             props.post.num_of_reactions = data.num_of_reactions
             props.post.current_user_has_reacted = data.current_user_has_reacted
+            showLikes = true
         })
 }
 
@@ -143,8 +146,9 @@ function updateComment() {
                     :class="[
                     post.current_user_has_reacted ? 'bg-sky-100 hover:bg-sky-200' : 'bg-gray-100 hover:bg-gray-200'
                 ]">
-                    <HandThumbUpIcon class="w-5 h-5"/>
-                    {{post.num_of_reactions}}
+                    <HandThumbUpIcon v-if="!post.current_user_has_reacted" class="w-5 h-5"/>
+                    <HandThumbUpIconSolid v-if="post.current_user_has_reacted" class="w-5 h-5"/>
+                    <span v-if="showLikes">{{post.num_of_reactions}}</span>
                     {{post.current_user_has_reacted ? 'Dislike' : 'Like'}}
                 </button>
                 <DisclosureButton
