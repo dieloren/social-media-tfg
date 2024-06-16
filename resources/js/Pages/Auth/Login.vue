@@ -76,7 +76,7 @@ const submit = () => {
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-4 gap-1">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
@@ -84,6 +84,10 @@ const submit = () => {
                 >
                     Forgot your password?
                 </Link>
+
+                <a href="/register" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Don't have an account?
+                </a>
 
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
