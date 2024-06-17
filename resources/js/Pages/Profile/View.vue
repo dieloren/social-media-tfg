@@ -14,7 +14,7 @@
                 {{ errors.cover }}
             </div>
             <div class="group relative bg-white">
-                <img :src="coverImageSource || user.cover_url !== '/storage/' ? coverImageSource || user.cover_url : '/img/default_cover.jpg'" class="w-full h-[200px] object-cover">
+                <img :src="coverImageSource || user.cover_url !== '/storage/' ? coverImageSource || user.cover_url : '/img/default_cover.jpeg'" class="w-full h-[200px] object-cover">
                 <div class="absolute top-2 right-2">
                     <button v-if="!coverImageSource" class="bg-gray-50 hover:bg-gray-100 text-gray-800 py-1 px-2 text-xs flex items-center opacity-0 group-hover:opacity-100">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
